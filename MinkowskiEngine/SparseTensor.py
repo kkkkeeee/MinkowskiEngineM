@@ -956,6 +956,10 @@ class SparseTensor():
         """
         # Currently only supports unweighted slice.
         return self.feats[X.inverse_mapping]
+        
+    def clone(self):
+        self._F = self._F.clone()
+        return self
 
     def features_at_coords(self, query_coords: torch.Tensor):
         r"""Extract features at the specified coordinate matrix.

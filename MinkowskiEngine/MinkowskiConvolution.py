@@ -189,6 +189,15 @@ class MinkowskiConvolutionTransposeFunction(Function):
               ctx.coords_man.CPPCoordsManager)
         return grad_in_feat, grad_kernel, None, None, None, None, None, None, None, None, None, None
 
+    def __repr__(self):
+        s = '(in_channels={}, out_channels={}, '.format(
+            self.in_channels, self.out_channels)
+        s += 'kernel_size={}, '.format(self.kernel_size.tolist())
+        s += 'stride={}, dilation={}, '.format(self.stride.tolist(),
+                                              self.dilation.tolist())
+        s += 'has_bias={}, dimension={})'.format(self.has_bias, self.dimension)
+        return self.__class__.__name__ + s
+
 
 class MinkowskiConvolutionBase(MinkowskiModuleBase):
 

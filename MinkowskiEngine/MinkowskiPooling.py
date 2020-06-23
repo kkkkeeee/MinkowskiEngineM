@@ -241,8 +241,8 @@ class MinkowskiPoolingBase(MinkowskiModuleBase):
             output, coords_key=out_coords_key, coords_manager=input.coords_man)
 
     def __repr__(self):
-        s = '(kernel_size={}, stride={}, dilation={})'.format(
-            self.kernel_size, self.stride, self.dilation)
+        s = '(kernel_size={}, stride={}, dilation={}, dimension={})'.format(
+            self.kernel_size.tolist(), self.stride.tolist(), self.dilation.tolist(), self.dimension)
         return self.__class__.__name__ + s
 
 
