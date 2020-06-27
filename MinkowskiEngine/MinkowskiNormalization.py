@@ -328,7 +328,7 @@ class MinkowskiInstanceNorm(Module):
 
         output = self.inst_norm.apply(input.F, self.mode, input.coords_key,
                                       None, input.coords_man)
-        output = output * self.weight.clone() + self.bias.clone()
+        output = output * self.weight + self.bias
 
         return SparseTensor(
             output,
