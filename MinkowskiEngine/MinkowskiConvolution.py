@@ -303,17 +303,17 @@ class MinkowskiConvolutionBase(MinkowskiModuleBase):
             self.bias.data.uniform_(-stdv, stdv)
 
     def __repr__(self):
-        s = '(in={}, out={}, region_type={}, '.format(
-            self.in_channels, self.out_channels,
-            self.kernel_generator.region_type)
+        s = '(in_channels={}, out_channels={}, '.format(
+            self.in_channels, self.out_channels
         if self.kernel_generator.region_type in [
                 RegionType.HYBRID, RegionType.CUSTOM
         ]:
             s += 'kernel_volume={}, '.format(self.kernel_volume)
         else:
             s += 'kernel_size={}, '.format(self.kernel_size.tolist())
-        s += 'stride={}, dilation={})'.format(self.stride.tolist(),
+        s += 'stride={}, dilation={}, )'.format(self.stride.tolist(),
                                               self.dilation.tolist())
+        s += 'has_bias={}, dimension={})'.format(self.has_bias, self.dimension)
         return self.__class__.__name__ + s
 
 
