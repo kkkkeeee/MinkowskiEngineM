@@ -311,7 +311,7 @@ class MinkowskiConvolutionBase(MinkowskiModuleBase):
             s += 'kernel_volume={}, '.format(self.kernel_volume)
         else:
             s += 'kernel_size={}, '.format(self.kernel_size.tolist())
-        s += 'stride={}, dilation={}, )'.format(self.stride.tolist(),
+        s += 'stride={}, dilation={}, '.format(self.stride.tolist(),
                                               self.dilation.tolist())
         s += 'has_bias={}, dimension={})'.format(self.has_bias, self.dimension)
         return self.__class__.__name__ + s
