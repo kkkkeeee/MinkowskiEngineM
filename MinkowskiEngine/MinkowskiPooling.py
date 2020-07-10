@@ -851,4 +851,4 @@ class MinkowskiGlobalMaxPooling(MinkowskiModuleBase):
             output, coords_key=out_coords_key, coords_manager=input.coords_man)
 
     def __repr__(self):
-        return self.__class__.__name__
+        return self.__class__.__name__ + '()'
