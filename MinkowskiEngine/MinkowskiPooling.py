@@ -748,22 +748,4 @@ class MinkowskiGlobalMaxPooling(MinkowskiGlobalPooling):
         of the coords is the batch index.
 
         """
-<<<<<<< HEAD
-        super(MinkowskiGlobalMaxPooling, self).__init__()
-        self.pooling = MinkowskiGlobalMaxPoolingFunction()
-
-    def forward(self, input):
-        assert isinstance(input, SparseTensor)
-
-        out_coords_key = CoordsKey(input.coords_key.D)
-        output = self.pooling.apply(input.F, input.coords_key, out_coords_key,
-                                    input.coords_man)
-
-        return SparseTensor(
-            output, coords_key=out_coords_key, coords_manager=input.coords_man)
-
-    def __repr__(self):
-        return self.__class__.__name__ + '()'
-=======
         MinkowskiGlobalPooling.__init__(self, mode=mode)
->>>>>>> f4494f26f97ef815c8f21fadb52e65e0c0941479
