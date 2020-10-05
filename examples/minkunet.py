@@ -29,7 +29,7 @@ import MinkowskiEngine as ME
 
 from MinkowskiEngine.modules.resnet_block import BasicBlock, Bottleneck
 
-from tests.common import data_loader
+from tests.python.common import data_loader
 from examples.resnet import ResNetBase
 
 
@@ -38,6 +38,7 @@ class MinkUNetBase(ResNetBase):
     PLANES = None
     DILATIONS = (1, 1, 1, 1, 1, 1, 1, 1)
     LAYERS = (2, 2, 2, 2, 2, 2, 2, 2)
+    PLANES = (32, 64, 128, 256, 256, 128, 96, 96)
     INIT_DIM = 32
     OUT_TENSOR_STRIDE = 1
 
@@ -112,10 +113,10 @@ class MinkUNetBase(ResNetBase):
                                        self.LAYERS[7])
 
         self.final = ME.MinkowskiConvolution(
-            self.PLANES[7],
+            self.PLANES[7] * self.BLOCK.expansion,
             out_channels,
             kernel_size=1,
-            has_bias=True,
+            bias=True,
             dimension=D)
         self.relu = ME.MinkowskiReLU(inplace=True)
 
